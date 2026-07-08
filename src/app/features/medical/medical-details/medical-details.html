@@ -1,0 +1,61 @@
+<div class="medical-container">
+
+    <h2>{{'MEDICAL.TITLE'|translate}}</h2>
+
+    <div class="top-section">
+        <p class="record-count">
+            {{'MEDICAL.TOTAL_RECORDS' | translate}}: {{medicalDetails.length}}</p>
+
+        <p class="record-count">
+            {{'MEDICAL.TOTAL_DEPENDENTS' | translate}}:{{totalDependents}}
+        </p>
+
+        <button routerLink="/add-medical" class="add-btn">
+            + {{'MEDICAL.ADD' | translate}}
+        </button>
+    </div>
+
+    <div *ngIf="loading" class="spinner">
+        <mat-spinner diameter="60">
+        </mat-spinner>
+    </div>
+
+    <div class="table-card">
+        <table *ngIf="!loading">
+            <thead>
+                <tr>
+                    <th>{{'MEDICAL.EMPLOYEE_ID'|translate}}</th>
+                    <th>{{'MEDICAL.POLICY_NAME'|translate}}</th>
+                    <th>{{'MEDICAL.CLAIMED_AMOUNT'|translate}}</th>
+                    <th>{{'MEDICAL.DEPENDENTS'|translate}}</th>
+                    <th>{{'MEDICAL.POLICY_MAX'|translate}}</th>
+                    <th>{{'MEDICAL.BALANCE'|translate}}</th>
+                    <th>{{'MEDICAL.ACTIONS'|translate}}</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let medical of medicalDetails">
+                    <td>{{medical.employeeId}}</td>
+                    <td>{{medical.policyName}}</td>
+                    <td>{{medical.claimedAmount | currency: 'INR'}}</td>
+                    <td>{{medical.numberOfDependents}}</td>
+                    <td>{{medical.salary <= 500000 ? (1000000 | currency:'INR'): ((medical.salary * 2.5) |
+                            currency:'INR')}}</td>
+                    <td>
+                        {{medical.salary <= 500000 ? ((1000000 - medical.claimedAmount)|
+                            currency:'INR'):(((medical.salary * 2.5) - medical.claimedAmount) | currency:'INR') }} </td>
+                    <td>
+
+                        <button class="edit-btn" (click)="editMedical(medical.id)">
+                            {{'MEDICAL.EDIT'|translate}}
+                        </button>
+                        <button class="delete-btn" (click)="deleteMedical(medical.id)">
+                            {{'MEDICAL.DELETE'|translate}}
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

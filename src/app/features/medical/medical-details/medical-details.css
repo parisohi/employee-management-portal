@@ -1,0 +1,136 @@
+.medical-container {
+    max-width: 1250px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+h2 {
+    color: #1976d2;
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.record-count {
+    font-size: 18px;
+    font-weight: 600;
+    color: #444;
+}
+
+.add-btn {
+    background: #1976d2;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.add-btn:hover {
+    background: #125ca8;
+}
+
+.table-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #1976d2;
+    color: white;
+}
+
+th {
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+
+td {
+    padding: 18px 16px;
+    text-align: center;
+    font-size: 15px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #ececec;
+    transition: .2s;
+}
+
+tbody tr:hover {
+    background: #f5f9ff;
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+.edit-btn {
+    background: #43a047;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 8px;
+    transition: .3s;
+}
+
+.edit-btn:hover {
+    background: #2e7d32;
+}
+
+.delete-btn {
+    background: #e53935;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.delete-btn:hover {
+    background: #c62828;
+}
+
+@media (max-width: 992px) {
+    .table-card {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 900px;
+    }
+
+    .top-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+}

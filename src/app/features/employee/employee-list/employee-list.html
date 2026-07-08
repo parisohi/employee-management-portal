@@ -1,0 +1,100 @@
+<div class="employee-container">
+
+    <div class="header">
+        <h2>{{ 'EMPLOYEE.TITLE'|translate }}</h2>
+
+        <button class="add-btn" routerLink="/add-employees">
+            + {{'EMPLOYEE.ADD' | translate}}
+        </button>
+    </div>
+
+    <p>{{ 'EMPLOYEE.TOTAL'|translate }}: {{ allEmployees.length }}</p>
+
+    <div class="search-box">
+        <input type="text" [placeholder]="'EMPLOYEE.SEARCH' | translate" [(ngModel)]="searchText"
+            (input)="searchEmployees()" />
+    </div>
+
+    <div class="filter-box">
+
+        <label>{{'EMPLOYEE.PROFESSION' | translate }}:</label>
+
+        <select [(ngModel)]="selectedProfession" (change)="filterByProfession()">
+            <option *ngFor="let profession of professions" [value]="profession">
+                {{ profession }}
+            </option>
+        </select>
+
+        <label>{{'EMPLOYEE.AGE'|translate }}:</label>
+        <select [(ngModel)]="selectedAge" (change)="filterByAge()">
+            <option *ngFor="let age of ageGroups" [value]="age">
+                {{ age }}
+            </option>
+        </select>
+
+        <label>{{ 'EMPLOYEE.SORT' | translate }}:</label>
+        <select [(ngModel)]="sortOption" (change)="sortEmployees()">
+            <option *ngFor="let option of sortOptions" [value]="option">
+                {{ option }}
+            </option>
+        </select>
+
+    </div>
+
+    <div *ngIf="loading" class="spinner">
+        <mat-spinner diameter="60"></mat-spinner>
+    </div>
+
+    <table *ngIf="!loading">
+        <thead>
+            <tr>
+                <th>{{'EMPLOYEE.ID' | translate }}</th>
+                <th>{{'EMPLOYEE.NAME' | translate }}</th>
+                <th>{{'EMPLOYEE.EMAIL' | translate }}</th>
+                <th>{{'EMPLOYEE.CONTACT' | translate}}</th>
+                <th>{{'EMPLOYEE.AGE' | translate }}</th>
+                <th>{{'EMPLOYEE.PROFESSION_COL'| translate }}</th>
+                <th>{{'EMPLOYEE.SALARY'| translate }}</th>
+                <th>{{'EMPLOYEE.ACTIONS'| translate }}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let emp of paginatedEmployees">
+                <td>{{ emp.id }}</td>
+                <td>{{ emp.firstName }} {{ emp.lastName }}</td>
+                <td>{{ emp.email }}</td>
+                <td>{{emp.contactNumber}}</td>
+                <td>{{ emp.age }}</td>
+                <td>{{ emp.profession }}</td>
+                <td>{{ emp.salary | currency:'INR' }}</td>
+                <td>
+                    <button (click)="editEmployee(emp.id)">
+                        {{ 'EMPLOYEE.EDIT'| translate }}
+                    </button>
+
+                    <button (click)="deleteEmployee(emp.id)">
+                        {{ 'EMPLOYEE.DELETE'| translate }}
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="pagination">
+
+        <button (click)="previousPage()" [disabled]="currentPage === 1">
+            {{ 'EMPLOYEE.PREVIOUS' | translate }}
+        </button>
+
+        <span>
+            {{ 'EMPLOYEE.PAGE' | translate }} {{ currentPage }}
+        </span>
+
+        <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= employees.length">
+            {{ 'EMPLOYEE.NEXT' | translate }}
+        </button>
+
+    </div>
+
+</div>

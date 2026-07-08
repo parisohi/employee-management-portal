@@ -1,0 +1,90 @@
+<div class="employee-container">
+
+    <h2>{{isEditMode ? ('EMPLOYEE_FORM.EDIT_TITLE' | translate): ('EMPLOYEE_FORM.ADD_TITLE' |translate)}}</h2>
+
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label>{{'EMPLOYEE_FORM.FIRST_NAME' |translate}}</label>
+            <input type="text" formControlName="firstName">
+            <small *ngIf="employeeForm.get('firstName')?.touched && employeeForm.get('firstName')?.invalid"
+                class="error">
+                {{'EMPLOYEE_FORM.FIRST_NAME_REQUIRED' |translate}}
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label>{{'EMPLOYEE_FORM.LAST_NAME' |translate}}</label>
+            <input type="text" formControlName="lastName">
+            <small *ngIf="employeeForm.get('lastName')?.touched && employeeForm.get('lastName')?.invalid" class="error">
+                {{'EMPLOYEE_FORM.LAST_NAME_REQUIRED' |translate}}
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label>{{'EMPLOYEE_FORM.EMAIL' |translate}}</label>
+            <input type="email" formControlName="email">
+            <small *ngIf="employeeForm.get('email')?.touched && employeeForm.get('email')?.hasError('required')"
+                class="error">
+                {{'EMPLOYEE_FORM.EMAIL_REQUIRED' |translate}}
+            </small>
+
+            <small *ngIf="employeeForm.get('email')?.touched && employeeForm.get('email')?.hasError('email')"
+                class="error">
+                {{'EMPLOYEE_FORM.INVALID_EMAIL' |translate}}
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label>{{'EMPLOYEE.CONTACT' |translate}}</label>
+            <input type="text" formControlName="contactNumber">
+            <small *ngIf="employeeForm.get('contactNumber')?.touched && employeeForm.get('contactNumber')?.invalid"
+                class="error">
+                {{'EMPLOYEE_FORM.CONTACT_REQUIRED' | translate}}
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label>{{'EMPLOYEE_FORM.AGE' |translate}}</label>
+            <input type="number" formControlName="age">
+            <small *ngIf="employeeForm.get('age')?.touched && employeeForm.get('age')?.invalid" class="error">
+                {{'EMPLOYEE_FORM.AGE_REQUIRED' |translate}}
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label>{{'EMPLOYEE_FORM.PROFESSION' |translate}}</label>
+            <input type="text" formControlName="profession">
+            <small *ngIf="employeeForm.get('profession')?.touched && employeeForm.get('profession')?.invalid"
+                class="error">
+                {{'EMPLOYEE_FORM.PROFESSION_REQUIRED' |translate}}
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label>{{'EMPLOYEE_FORM.SALARY'|translate}}</label>
+            <input type="number" formControlName="salary">
+            <small *ngIf="employeeForm.get('salary')?.touched && employeeForm.get('salary')?.invalid" class="error">
+                {{'EMPLOYEES_FORM.SALARY_REQUIRED' |translate}}
+            </small>
+        </div>
+
+        <div class="form-group checkbox-group">
+
+            <label>
+                <input type="checkbox" formControlName="showHobbies">
+                {{'EMPLOYEE_FORM.SHOW_HOBBIES' | translate}}
+            </label>
+        </div>
+
+        <div class="form-group" *ngIf="showHobbies">
+            <label>{{'EMPLOYEE_FORM.HOBBIES' | translate}}</label>
+            <input type="text" formControlName="hobbies" [placeholder]="'EMPLOYEE_FORM.HOBBIES' |translate">
+        </div>
+
+        <button type="submit">
+            {{isEditMode ? ('EMPLOYEE_FORM.UPDATE' |translate):('EMPLOYEE_FORM.SAVE'|translate)}}
+        </button>
+
+    </form>
+</div>

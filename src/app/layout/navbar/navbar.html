@@ -1,0 +1,30 @@
+<nav class="navbar">
+
+    <div class="logo">
+        📝Employee-Portal
+    </div>
+
+    <div class="menu-icon" (click)="toggleMenu()">
+        {{isMenuOpen ? '☒' : '☰'}}
+    </div>
+
+    <div class="nav-links" [class.show]="isMenuOpen">
+
+        <a routerLink="/employees" routerLinkActive="active" (click)="isMenuOpen = false">
+            {{'NAVBAR.EMPLOYEES' | translate}}
+        </a>
+
+        <a routerLink="/medical" routerLinkActive="active" (click)="isMenuOpen = false">
+            {{'NAVBAR.MEDICAL' | translate}}
+        </a>
+
+        <a routerLink="/charts" routerLinkActive="active" (click)="isMenuOpen = false">
+            {{'NAVBAR.CHARTS' | translate}}
+        </a>
+
+        <a routerLink="/settings" routerLinkActive="active" (click)="isMenuOpen = false">
+            {{'NAVBAR.SETTINGS' | translate}}
+        </a>
+
+    </div>
+</nav>

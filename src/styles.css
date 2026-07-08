@@ -1,1 +1,70 @@
-/* You can add global styles to this file, and also import other style files */
+body.dark-theme {
+    background-color: #121212 !important;
+    color: white;
+    transition: all .3s ease;
+}
+
+body.dark-theme nav,
+body.dark-theme .navbar {
+    background: #1a1a1a !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .5);
+}
+
+body.dark-theme .card,
+body.dark-theme .chart-card,
+body.dark-theme .settings-card,
+body.dark-theme table,
+body.dark-theme .employee-container,
+body.dark-theme .medical-container {
+    background: #1f1f1f !important;
+    color: white !important;
+}
+
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme p,
+body.dark-theme label,
+body.dark-theme td,
+body.dark-theme th,
+body.dark-theme span {
+    color: white !important;
+}
+
+body.dark-theme input,
+body.dark-theme select,
+body.dark-theme textarea {
+    background: #2b2b2b;
+    color: white;
+    border: 1px solid #555;
+}
+
+body.dark-theme table {
+    border-collapse: collapse;
+}
+
+body.dark-theme th {
+    background: #1565c0;
+}
+
+body.dark-theme td {
+    border-color: #444;
+}
+
+body.dark-theme button {
+    transition: .3s;
+}
+
+body.dark-theme .dashboard-container,
+body.dark-theme .settings-container,
+body.dark-theme .employee-page,
+body.dark-theme .medical-page {
+    background: #121212 !important;
+}
+
+.app-container {
+    min-height: 100vh;
+}

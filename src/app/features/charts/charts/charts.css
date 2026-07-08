@@ -1,0 +1,100 @@
+.dashboard-container {
+    padding: 35px;
+    background: #f4f7fc;
+    min-height: 100vh;
+}
+
+.dashboard-container h1 {
+    text-align: center;
+    color: #1565c0;
+    margin-bottom: 40px;
+    font-size: 38px;
+    font-weight: 700;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.card {
+    height: 170px;
+    border-radius: 18px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card h3 {
+    font-size: 24px;
+    margin-bottom: 18px;
+}
+
+.card h2 {
+    font-size: 34px;
+    margin: 0;
+}
+
+.blue {
+    background: #1976d2;
+}
+
+.green {
+    background: #43a047;
+}
+
+.orange {
+    background: #fb8c00;
+}
+
+.red {
+    background: #e53935;
+}
+
+
+.charts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(500px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    align-items: start;
+    margin-top: 40px;
+}
+
+
+.chart-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
+    height: 450px;
+}
+
+.chart-card h2 {
+    color: #1565c0;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.chart-wrapper {
+    width: 100%;
+    height: 380px;
+    position: relative;
+
+}
+
+.chart-wrapper canvas {
+    width: 100% !important;
+    height: 100% !important;
+}

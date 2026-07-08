@@ -1,0 +1,57 @@
+<div class="medical-container">
+
+    <h2>{{'MEDICAL_FORM.TITLE'| translate}}</h2>
+
+    <form [formGroup]="medicalForm" (ngSubmit)="saveMedicalDetails()">
+
+        <div class="form-group">
+            <label>{{'MEDICAL_FORM.EMPLOYEE_ID'|translate}}</label>
+            <input type="number" formControlName="employeeId" [placeholder]="'MEDICAL_FORM.EMPLOYEE_ID' |translate">
+
+            <small *ngIf="medicalForm.get('employeeId')?.touched && medicalForm.get('employeeId')?.invalid">
+                {{'MEDICAL_FORM.EMPLOYEE_REQUIRED' |translate}}
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label>{{'MEDICAL_FORM.POLICY_NAME' |translate}}</label>
+            <input type="text" formControlName="policyName" [placeholder]="'MEDICAL_FORM.POLICY_NAME' |translate">
+
+            <small *ngIf="medicalForm.get('policyName')?.touched && medicalForm.get('policyName')?.invalid">
+                {{'MEDICAL_FORM.POLICY_REQUIRED' |translate}}
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label>{{'MEDICAL_FORM.CLAIMED_AMOUNT'|translate}}</label>
+            <input type="number" formControlName="claimedAmount"
+                [placeholder]="'MEDICAL_FORM.CLAIMED_AMOUNT'|translate">
+
+            <small *ngIf="medicalForm.get('claimedAmount')?.touched && medicalForm.get('claimedAmount')?.invalid">
+                {{'MEDICA_FORM.AMOUNT_REQUIRED' |translate}}
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label>{{'MEDICAL_FORM.DEPENDENTS'|translate}}</label>
+            <input type="number" formControlName="numberOfDependents"
+                [placeholder]="'MEDICAL_FORM.DEPENDENTS' |translate">
+            <small
+                *ngIf="medicalForm.get('numberOfDependents')?.touched && medicalForm.get('numberOfDependents')?.invalid">
+                {{'MEDICAL_FORM.DEPENDENTS_REQUIRED' |translate }}
+            </small>
+        </div>
+
+        <div class="button-group">
+            <button class="save-btn" type="submit" [disabled]="medicalForm.invalid">
+                {{'MEDICAL_FORM.SAVE' |translate}}
+            </button>
+
+            <button class="cancel-btn" type="button" routerLink="/medical">
+                {{'MEDICAL_FORM.CANCEL' |translate}}
+            </button>
+
+        </div>
+
+    </form>
+</div>
