@@ -8,8 +8,7 @@ import { Observable } from "rxjs";
 export class MedicalService {
 
     private http = inject(HttpClient);
-    private apiURL =
-        'http://localhost:3000/medicalDetails';
+    private apiURL = 'https://employee-management-portal-myas.onrender.com/medicalDetails';
 
     getMedicalDetails(): Observable<any[]> {
         return this.http.get<any[]>(this.apiURL);

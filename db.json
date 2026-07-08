@@ -232,6 +232,5 @@
       "id": "5",
       "name": "Designer"
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }
