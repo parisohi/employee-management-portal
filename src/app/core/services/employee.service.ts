@@ -1,6 +1,6 @@
 import { Injectable, inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable, BehaviorSubject } from "rxjs";
+import { Observable, BehaviorSubject, subscribeOn } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -8,12 +8,15 @@ import { Observable, BehaviorSubject } from "rxjs";
 export class EmployeeService {
 
     private http = inject(HttpClient);
-    private apiURL = 'https://employee-management-portal-myas.onrender.com/employees';
+
+    private apiURL =
+        'https://employee-management-portal-myas.onrender.com/employees';
+
+    private professionApiURL =
+        'https://employee-management-portal-myas.onrender.com/professions';
 
     private dummyApiURL = 'https://hub.dummyapis.com/employee?noofRecords=50&idStarts=1001';
 
-
-    private professionApiURL = 'http://localhost:3000/professions';
 
     private employeeSubject = new BehaviorSubject<any[]>([]);
     employee$ = this.employeeSubject.asObservable();
@@ -36,19 +39,45 @@ export class EmployeeService {
         return this.http.get<any[]>(this.professionApiURL);
     }
 
-    addEmployee(employee: any): Observable<any> {
-        return new Observable<any>(observer => {
-            this.http.post<any>(this.apiURL, employee).subscribe({
-                next: (data) => {
-                    this.loadEmployees();
-
-                    observer.next(data);
+    private generateEmployeeId(): Observable<string> {
+        return new Observable(observer => {
+            this.getEmployees().subscribe(employees => {
+                if (employees.length === 0) {
+                    observer.next('1001');
                     observer.complete();
-                },
-                error: err => observer.error(err)
+                    return;
+                }
+
+                const ids = employees
+                    .map(emp => Number(emp.id))
+                    .filter(id => !isNaN(id));
+
+                const maxId = Math.max(...ids);
+                observer.next(String(maxId + 1));
+                observer.complete();
+            });
+        });
+
+    }
+
+
+    addEmployee(employee: any): Observable<any> {
+        return new Observable(observer => {
+            this.generateEmployeeId().subscribe(newId => {
+                employee.id = newId;
+
+                this.http.post<any>(this.apiURL, employee).subscribe({
+                    next: (data) => {
+                        this.loadEmployees();
+                        observer.next(data);
+                        observer.complete();
+                    },
+                    error: err => observer.error(err)
+                });
             });
         });
     }
+
 
     deleteEmployee(id: string | number) {
         return new Observable<any>(observer => {

@@ -127,18 +127,6 @@
       "showHobbies": false,
       "hobbies": "",
       "id": "1012"
-    },
-    {
-      "firstName": "shaan",
-      "lastName": "kim",
-      "email": "kim@gmail.com",
-      "contactNumber": "1234556788",
-      "age": 55,
-      "profession": "Developer",
-      "salary": 8000000,
-      "showHobbies": false,
-      "hobbies": "",
-      "id": "1013"
     }
   ],
   "medicalDetails": [

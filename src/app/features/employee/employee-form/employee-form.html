@@ -53,14 +53,21 @@
         </div>
 
         <div class="form-group">
-            <label>{{'EMPLOYEE_FORM.PROFESSION' |translate}}</label>
-            <input type="text" formControlName="profession">
+            <label> {{'EMPLOYEE_FORM.PROFESSION' | translate}}</label>
+            <select formControlName="profession">
+                <option value="">Select Profession</option>
+                <option *ngFor="let profession of professions" [value]="profession.name">
+
+                    {{profession.name}}
+                </option>
+            </select>
+
             <small *ngIf="employeeForm.get('profession')?.touched && employeeForm.get('profession')?.invalid"
                 class="error">
                 {{'EMPLOYEE_FORM.PROFESSION_REQUIRED' |translate}}
             </small>
-        </div>
 
+        </div>
         <div class="form-group">
             <label>{{'EMPLOYEE_FORM.SALARY'|translate}}</label>
             <input type="number" formControlName="salary">

@@ -20,6 +20,9 @@ export class EmployeeForm implements OnInit {
   employeeId: string | null = null;
   isEditMode = false;
 
+  professions: any[] = [];
+
+
   constructor(
     private fb: FormBuilder,
     private employeeService: EmployeeService,
@@ -42,6 +45,16 @@ export class EmployeeForm implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.employeeService.getProfessions().subscribe({
+      next: (data) => {
+        this.professions = data;
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+
     this.employeeId = this.route.snapshot.paramMap.get('id');
     if (this.employeeId) {
       this.isEditMode = true;
