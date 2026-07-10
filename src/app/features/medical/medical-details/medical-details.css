@@ -76,7 +76,19 @@ tbody tr {
 }
 
 tbody tr:hover {
-    background: #f5f9ff;
+    background: #2d2d2d;
+}
+
+tbody tr:hover td {
+    color: white;
+}
+
+tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+tbody td {
+    transition: color 0.3s ease;
 }
 
 tbody tr:last-child {

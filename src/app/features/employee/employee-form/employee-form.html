@@ -72,7 +72,7 @@
             <label>{{'EMPLOYEE_FORM.SALARY'|translate}}</label>
             <input type="number" formControlName="salary">
             <small *ngIf="employeeForm.get('salary')?.touched && employeeForm.get('salary')?.invalid" class="error">
-                {{'EMPLOYEES_FORM.SALARY_REQUIRED' |translate}}
+                {{'EMPLOYEE_FORM.SALARY_REQUIRED' |translate}}
             </small>
         </div>
 
@@ -89,9 +89,10 @@
             <input type="text" formControlName="hobbies" [placeholder]="'EMPLOYEE_FORM.HOBBIES' |translate">
         </div>
 
-        <button type="submit">
-            {{isEditMode ? ('EMPLOYEE_FORM.UPDATE' |translate):('EMPLOYEE_FORM.SAVE'|translate)}}
+        <button type="submit" [disabled]="employeeForm.invalid">
+            {{isEditMode
+            ? ('EMPLOYEE_FORM.UPDATE' | translate)
+            : ('EMPLOYEE_FORM.SAVE' | translate)}}
         </button>
-
     </form>
 </div>

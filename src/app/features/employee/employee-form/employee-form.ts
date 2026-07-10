@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { EmployeeService } from '../../../core/services/employee.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { MedicalService } from '../../../core/services/medical.service';
 
 @Component({
   selector: 'app-employee-form',
@@ -26,6 +27,7 @@ export class EmployeeForm implements OnInit {
   constructor(
     private fb: FormBuilder,
     private employeeService: EmployeeService,
+    private medicalServices: MedicalService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -78,13 +80,34 @@ export class EmployeeForm implements OnInit {
       this.employeeForm.markAllAsTouched();
       return;
     }
+
+
     if (this.isEditMode && this.employeeId) {
       this.employeeService.updateEmployee(this.employeeId, this.employeeForm.value).subscribe({
+
         next: () => {
-          this.translate.get('MESSAGES.EMPLOYEE_UPDATED').subscribe((message: string) => {
-            alert(message);
-          })
-          this.router.navigate(['/employees']);
+          this.medicalServices.getMedicalDetails().subscribe({
+
+            next: (medicalRecords: any[]) => {
+              const medical = medicalRecords.find(
+                m => m.employeeId === Number(this.employeeId)
+              );
+
+              if (medical) {
+                medical.salary = this.employeeForm.value.salary;
+
+                this.medicalServices.updateMedicalDetail(
+                  medical.id,
+                  medical
+                ).subscribe();
+
+              }
+              this.translate.get('MESSAGES.EMPLOYEE_UPDATED').subscribe((message: string) => {
+                alert(message);
+              });
+              this.router.navigate(['/employees']);
+            }
+          });
         },
         error: (err) => {
           console.error(err);
@@ -93,7 +116,9 @@ export class EmployeeForm implements OnInit {
           });
         }
       });
-    } else {
+    }
+
+    else {
 
       this.employeeService.addEmployee(this.employeeForm.value).subscribe({
 

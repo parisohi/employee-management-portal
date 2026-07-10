@@ -8,6 +8,7 @@ import { Observable } from "rxjs";
 export class MedicalService {
 
     private http = inject(HttpClient);
+
     private apiURL = 'https://employee-management-portal-myas.onrender.com/medicalDetails';
 
     getMedicalDetails(): Observable<any[]> {
@@ -18,6 +19,13 @@ export class MedicalService {
     getMedicalDetailById(id: number | string) {
         return this.http.get<any>(`${this.apiURL}/${id}`);
     }
+
+    getMedicalByEmployeeId(employeeId: number | string): Observable<any[]> {
+        return this.http.get<any[]>(
+            `${this.apiURL}?.employeeId=${employeeId}`
+        );
+    }
+
 
     addMedicalDetail(data: any): Observable<any> {
         return this.http.post<any>(this.apiURL, data)

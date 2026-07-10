@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterModule } from "@angular/router";
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-medical-details',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterModule, TranslatePipe, MatProgressSpinnerModule],
+  imports: [CommonModule, RouterLink, RouterModule, TranslatePipe, FormsModule, MatProgressSpinnerModule],
   templateUrl: './medical-details.html',
   styleUrl: './medical-details.css',
 })
@@ -22,6 +23,8 @@ export class MedicalDetails implements OnInit {
   medicalDetails: any[] = [];
   loading = false;
   totalDependents: number = 0;
+  sortAscending = true;
+  sortIcon = '▲';
 
   ngOnInit(): void {
     this.loadMedicalDetails();
@@ -45,6 +48,17 @@ export class MedicalDetails implements OnInit {
         this.loading = false;
       }
     });
+  }
+
+  toggleEmployeeIdSort() {
+    if (this.sortAscending) {
+      this.medicalDetails.sort((a, b) => a.employeeId - b.employeeId);
+      this.sortIcon = '▼';
+    } else {
+      this.medicalDetails.sort((a, b) => b.employeeId - a.employeeId);
+      this.sortIcon = '▲';
+    }
+    this.sortAscending = !this.sortAscending;
   }
 
   editMedical(id: number | string): void {

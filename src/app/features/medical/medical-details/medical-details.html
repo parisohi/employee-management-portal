@@ -24,7 +24,11 @@
         <table *ngIf="!loading">
             <thead>
                 <tr>
-                    <th>{{'MEDICAL.EMPLOYEE_ID'|translate}}</th>
+                    <th (click)="toggleEmployeeIdSort()" style="cursor:pointer; user-select:none;">
+                        {{'MEDICAL.EMPLOYEE_ID'|translate}}
+                        {{sortIcon}}
+                    </th>
+
                     <th>{{'MEDICAL.POLICY_NAME'|translate}}</th>
                     <th>{{'MEDICAL.CLAIMED_AMOUNT'|translate}}</th>
                     <th>{{'MEDICAL.DEPENDENTS'|translate}}</th>

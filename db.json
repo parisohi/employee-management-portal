@@ -7,7 +7,7 @@
       "contactNumber": "9876543210",
       "age": 19,
       "profession": "Designer",
-      "salary": 450000,
+      "salary": 750000,
       "showHobbies": false,
       "hobbies": "",
       "id": "1001"
@@ -23,14 +23,16 @@
       "salary": 850000
     },
     {
-      "id": "1003",
       "firstName": "Sophia",
       "lastName": "Wilson",
       "email": "sophia@gmail.com",
       "contactNumber": "9876543212",
       "age": 26,
       "profession": "HR",
-      "salary": 550000
+      "salary": 880000,
+      "showHobbies": false,
+      "hobbies": "",
+      "id": "1003"
     },
     {
       "firstName": "Michael",
@@ -75,14 +77,16 @@
       "salary": 480000
     },
     {
-      "id": "1008",
       "firstName": "William",
       "lastName": "Clark",
       "email": "william@gmail.com",
       "contactNumber": "9876543217",
       "age": 29,
       "profession": "Developer",
-      "salary": 750000
+      "salary": 567000,
+      "showHobbies": false,
+      "hobbies": "",
+      "id": "1008"
     },
     {
       "id": "1009",
@@ -146,7 +150,7 @@
       "id": "1",
       "employeeId": 1001,
       "policyName": "Star Health",
-      "salary": 450000,
+      "salary": 750000,
       "claimedAmount": 150000,
       "numberOfDependents": 2
     },
@@ -162,7 +166,7 @@
       "id": "3",
       "employeeId": 1003,
       "policyName": "ICICI Lombard",
-      "salary": 480000,
+      "salary": 880000,
       "claimedAmount": 120000,
       "numberOfDependents": 3
     },
@@ -202,7 +206,7 @@
       "id": "8",
       "employeeId": 1008,
       "policyName": "ICICI Lombard",
-      "salary": 400000,
+      "salary": 567000,
       "claimedAmount": 350000,
       "numberOfDependents": 1
     },

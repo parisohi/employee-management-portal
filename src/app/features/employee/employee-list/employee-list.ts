@@ -7,6 +7,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { skip } from 'rxjs';
 
+
 @Component({
   selector: 'app-employee-list',
   standalone: true,
@@ -53,8 +54,8 @@ export class EmployeeList implements OnInit {
     'Salary (High-Low)',
     'Age (Young-Old)',
     'Age (Old-Young)',
-    ' contact(Low-High)',
-    'contact(High-Low)'
+    'Contact(Low-High)',
+    'Contact(High-Low)'
   ];
 
 
@@ -152,7 +153,7 @@ export class EmployeeList implements OnInit {
         break;
 
       case 'Contact (Low-High)':
-        this.employees.sort((a, b) => Number(a.contactNumber) - Number(a.contactNumber));
+        this.employees.sort((a, b) => Number(a.contactNumber) - Number(b.contactNumber));
         break;
 
       case 'Contact (High-Low)':
@@ -211,5 +212,4 @@ export class EmployeeList implements OnInit {
       });
     });
   }
-
-}
+} 

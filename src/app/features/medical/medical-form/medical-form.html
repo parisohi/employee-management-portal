@@ -21,6 +21,10 @@
                 {{'MEDICAL_FORM.POLICY_REQUIRED' |translate}}
             </small>
         </div>
+        <div class="form-group">
+            <label>{{'MEDICAL.POLICY_MAX' | translate}}</label>
+            <input type="number" formControlName="policyMaxAmount" readonly>
+        </div>
 
         <div class="form-group">
             <label>{{'MEDICAL_FORM.CLAIMED_AMOUNT'|translate}}</label>
@@ -28,8 +32,14 @@
                 [placeholder]="'MEDICAL_FORM.CLAIMED_AMOUNT'|translate">
 
             <small *ngIf="medicalForm.get('claimedAmount')?.touched && medicalForm.get('claimedAmount')?.invalid">
-                {{'MEDICA_FORM.AMOUNT_REQUIRED' |translate}}
+                {{'MEDICAL_FORM.AMOUNT_REQUIRED' |translate}}
             </small>
+        </div>
+
+        <div class="form-group">
+            <label>{{'MEDICAL.BALANCE' |translate}}</label>
+
+            <input type="number" formControlName="balance" readonly>
         </div>
 
         <div class="form-group">

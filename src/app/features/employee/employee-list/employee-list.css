@@ -47,8 +47,7 @@ h2 {
 table {
     width: 100%;
     border-collapse: collapse;
-    background: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, .15);
+    background: #1f1f1f box-shadow 0 4px 10px rgba(0, 0, 0, .15);
 }
 
 th {
@@ -64,14 +63,28 @@ td {
 }
 
 tr:hover {
-    background: #f5f5f5;
+    background-color: #2d2d2d;
 }
+
+tr:hover td {
+    color: #ffffff;
+}
+
+
+tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+tbody td {
+    transition: color 0.3s ease;
+}
+
 
 .search-box {
     margin-bottom: 20px;
 }
 
-.seachr-box input {
+.search-box input {
     width: 350px;
     padding: 10px;
     border: 1px solid #ccc;
