@@ -1,16 +1,18 @@
 import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { MedicalService } from '../../../core/services/medical.service';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink, RouterModule } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { MedicalForm } from '../medical-form/medical-form';
 
 
 @Component({
   selector: 'app-medical-details',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterModule, TranslatePipe, FormsModule, MatProgressSpinnerModule],
+  imports: [CommonModule, RouterModule, TranslatePipe, FormsModule, MatProgressSpinnerModule],
   templateUrl: './medical-details.html',
   styleUrl: './medical-details.css',
 })
@@ -19,6 +21,7 @@ export class MedicalDetails implements OnInit {
   private router = inject(Router);
   private cdr = inject(ChangeDetectorRef);
   private translate = inject(TranslateService);
+  private dialog = inject(MatDialog);
 
   medicalDetails: any[] = [];
   loading = false;
@@ -62,9 +65,25 @@ export class MedicalDetails implements OnInit {
   }
 
   editMedical(id: number | string): void {
-    this.router.navigate(['/edit-medical', id]);
+    this.dialog.open(MedicalForm, {
+      width: '550px',
+      data: { id: id }
+    }).afterClosed().subscribe(() => {
+      this.loadMedicalDetails();
+    });
   }
 
+
+  addMedicalDetails(): void {
+    const dialogRef = this.dialog.open(MedicalForm, {
+      width: '550px',
+      maxHeight: '80vh',
+      panelClass: 'employee-dialog'
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.loadMedicalDetails();
+    });
+  }
   deleteMedical(id: number | string): void {
     this.translate.get('MESSAGES.DELETE_CONFIRM').subscribe((message: string) => {
       const confirmDelete = confirm(message);

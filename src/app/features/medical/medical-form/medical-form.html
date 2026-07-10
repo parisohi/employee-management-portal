@@ -1,6 +1,6 @@
 <div class="medical-container">
 
-    <h2>{{'MEDICAL_FORM.TITLE'| translate}}</h2>
+    <h2>{{(isEditMode ? 'Edit Medical Details':('MEDICAL_FORM.TITLE' | translate))}}</h2>
 
     <form [formGroup]="medicalForm" (ngSubmit)="saveMedicalDetails()">
 
@@ -57,7 +57,7 @@
                 {{'MEDICAL_FORM.SAVE' |translate}}
             </button>
 
-            <button class="cancel-btn" type="button" routerLink="/medical">
+            <button class="cancel-btn" type="button">
                 {{'MEDICAL_FORM.CANCEL' |translate}}
             </button>
 

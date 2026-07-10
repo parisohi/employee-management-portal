@@ -1,7 +1,13 @@
 .medical-container {
     max-width: 1250px;
-    margin: 30px auto;
+    margin: 0;
     padding: 20px;
+}
+
+mat-dialog-content {
+    max-height: 70vh;
+    overflow: auto;
+    padding: 0;
 }
 
 h2 {
@@ -15,7 +21,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .record-count {

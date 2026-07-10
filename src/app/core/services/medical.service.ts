@@ -9,7 +9,7 @@ export class MedicalService {
 
     private http = inject(HttpClient);
 
-    private apiURL = 'https://employee-management-portal-myas.onrender.com/medicalDetails';
+    private apiURL = 'http://localhost:3000/medicalDetails';
 
     getMedicalDetails(): Observable<any[]> {
         return this.http.get<any[]>(this.apiURL);

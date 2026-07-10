@@ -4,6 +4,7 @@ import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MedicalService } from '../../../core/services/medical.service';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-medical-form',
@@ -15,11 +16,13 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 export class MedicalForm implements OnInit {
 
   private fb = inject(FormBuilder);
+  private dialogRef = inject(MatDialogRef<MedicalForm>)
+  data = inject(MAT_DIALOG_DATA);
   private medicalService = inject(MedicalService);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private translate = inject(TranslateService);
-
+  isEditMode: boolean = false;
   medicalId: string | null = null;
 
   medicalForm: FormGroup = this.fb.group({
@@ -33,7 +36,8 @@ export class MedicalForm implements OnInit {
   });
 
   ngOnInit(): void {
-    this.medicalId = this.route.snapshot.paramMap.get('id');
+    this.isEditMode = !!this.data;
+    this.data, this.medicalId = this.data?.id;
     if (this.medicalId) {
 
       this.medicalService.getMedicalDetailById(this.medicalId).subscribe((data: any) => {
@@ -87,26 +91,22 @@ export class MedicalForm implements OnInit {
           this.translate.get('MESSAGES.MEDICAL_UPDATED').subscribe((message: string) => {
             alert(message);
           });
-          this.router.navigate(['/medical']);
+          this.dialogRef.close(true);
         },
         error: (err) => {
           console.error(err);
-          this.translate.get('MESSAGES.ERROR').subscribe((message: string) => {
-            alert(message);
-          });
-
         }
-
       });
+    }
 
-    } else {
+    else {
 
       this.medicalService.addMedicalDetail(medicalData).subscribe({
         next: () => {
           this.translate.get('MESSAGES.MEDICAL_ADDED').subscribe((message: string) => {
             alert(message);
           });
-          this.router.navigate(['/medical']);
+          this.dialogRef.close(true);
         },
 
         error: (err) => {
@@ -117,5 +117,5 @@ export class MedicalForm implements OnInit {
         }
       });
     }
-  }
+  };
 }

@@ -5,6 +5,7 @@ import { EmployeeService } from '../../../core/services/employee.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MedicalService } from '../../../core/services/medical.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-employee-form',
@@ -16,6 +17,8 @@ import { MedicalService } from '../../../core/services/medical.service';
 export class EmployeeForm implements OnInit {
 
   private translate = inject(TranslateService);
+  private dialogRef = inject(MatDialogRef<EmployeeForm>, { optional: true });
+  private dialogData = inject(MAT_DIALOG_DATA, { optional: true });
 
   employeeForm: FormGroup;
   employeeId: string | null = null;
@@ -57,7 +60,9 @@ export class EmployeeForm implements OnInit {
       }
     });
 
-    this.employeeId = this.route.snapshot.paramMap.get('id');
+    this.employeeId =
+      this.dialogData?.id ??
+      this.route.snapshot.paramMap.get('id')
     if (this.employeeId) {
       this.isEditMode = true;
       this.employeeService.getEmployeeById(this.employeeId).subscribe({
@@ -105,6 +110,10 @@ export class EmployeeForm implements OnInit {
               this.translate.get('MESSAGES.EMPLOYEE_UPDATED').subscribe((message: string) => {
                 alert(message);
               });
+              if (this.dialogRef) {
+                this.dialogRef.close(true);
+                return;
+              }
               this.router.navigate(['/employees']);
             }
           });
@@ -127,6 +136,10 @@ export class EmployeeForm implements OnInit {
           this.translate.get('MESSAGES.EMPLOYEE_ADDED').subscribe((message: string) => {
             alert(message);
           });
+          if (this.dialogRef) {
+            this.dialogRef.close(true);
+            return;
+          }
           this.employeeForm.reset();
         },
 

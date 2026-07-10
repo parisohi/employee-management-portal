@@ -10,7 +10,7 @@
             {{'MEDICAL.TOTAL_DEPENDENTS' | translate}}:{{totalDependents}}
         </p>
 
-        <button routerLink="/add-medical" class="add-btn">
+        <button (click)="addMedicalDetails()" class="add-btn">
             + {{'MEDICAL.ADD' | translate}}
         </button>
     </div>

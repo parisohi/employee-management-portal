@@ -3,7 +3,7 @@
     <div class="header">
         <h2>{{ 'EMPLOYEE.TITLE'|translate }}</h2>
 
-        <button class="add-btn" routerLink="/add-employees">
+        <button class="add-btn" (click)="addEmployee()">
             + {{'EMPLOYEE.ADD' | translate}}
         </button>
     </div>
@@ -69,11 +69,11 @@
                 <td>{{ emp.profession }}</td>
                 <td>{{ emp.salary | currency:'INR' }}</td>
                 <td>
-                    <button (click)="editEmployee(emp.id)">
+                    <button class="edit-btn" (click)="editEmployee(emp.id)">
                         {{ 'EMPLOYEE.EDIT'| translate }}
                     </button>
 
-                    <button (click)="deleteEmployee(emp.id)">
+                    <button class="delete-btn" (click)="deleteEmployee(emp.id)">
                         {{ 'EMPLOYEE.DELETE'| translate }}
                     </button>
                 </td>

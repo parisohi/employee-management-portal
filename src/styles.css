@@ -68,3 +68,23 @@ body.dark-theme .medical-page {
 .app-container {
     min-height: 100vh;
 }
+
+.mat-mdc-dialog-content {
+    max-height: 80vh !important;
+    overflow-y: auto !important;
+    padding: 0 !important;
+}
+
+.mat-mdc-dialog-surface {
+    padding: 0 !important;
+}
+
+.employee-dialog .mat-mdc-dialog-container {
+    padding: 0 !important;
+}
+
+.employee-dialog .mat-mdc-dialog-surface {
+    padding: 0 !important;
+    overflow-y: auto;
+    max-height: 80vh
+}

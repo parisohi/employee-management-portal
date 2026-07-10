@@ -6,12 +6,13 @@ import { Router, RouterLink } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { skip } from 'rxjs';
-
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { EmployeeForm } from '../employee-form/employee-form';
 
 @Component({
   selector: 'app-employee-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslatePipe, MatProgressSpinnerModule, RouterLink],
+  imports: [CommonModule, FormsModule, TranslatePipe, MatProgressSpinnerModule, RouterLink, MatDialogModule],
   templateUrl: './employee-list.html',
   styleUrl: './employee-list.css',
 })
@@ -21,6 +22,7 @@ export class EmployeeList implements OnInit {
   private router = inject(Router);
   private cdr = inject(ChangeDetectorRef);
   private translate = inject(TranslateService);
+  private dialog = inject(MatDialog);
 
   employees: any[] = [];
   allEmployees: any[] = [];
@@ -184,7 +186,26 @@ export class EmployeeList implements OnInit {
     }
   }
   editEmployee(id: string | number): void {
-    this.router.navigate(['/edit-employee', id]);
+    const dialogRef = this.dialog.open(EmployeeForm, {
+      width: '550px',
+      maxHeight: '85vh',
+      panelClass: 'employee-dialog',
+      data: { id }
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.loadEmployees();
+    });
+  }
+
+  addEmployee(): void {
+    const dialogRef = this.dialog.open(EmployeeForm, {
+      width: '550px',
+      maxHeight: '85vh',
+      panelClass: 'employee-dialog'
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.loadEmployees();
+    });
   }
 
   deleteEmployee(id: string | number): void {

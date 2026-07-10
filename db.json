@@ -143,16 +143,30 @@
       "showHobbies": false,
       "hobbies": "",
       "id": "1013"
+    },
+    {
+      "firstName": "jass",
+      "lastName": "Watson",
+      "email": "jass@gmail.com",
+      "contactNumber": "9876543267",
+      "age": 29,
+      "profession": "Developer",
+      "salary": 450000,
+      "showHobbies": true,
+      "hobbies": "sdsd",
+      "id": "1014"
     }
   ],
   "medicalDetails": [
     {
-      "id": "1",
       "employeeId": 1001,
       "policyName": "Star Health",
       "salary": 750000,
+      "policyMaxAmount": 1875000,
       "claimedAmount": 150000,
-      "numberOfDependents": 2
+      "balance": 1725000,
+      "numberOfDependents": 2,
+      "id": "1"
     },
     {
       "id": "2",
@@ -225,6 +239,16 @@
       "salary": 300000,
       "claimedAmount": 180000,
       "numberOfDependents": 2
+    },
+    {
+      "employeeId": 1014,
+      "policyName": "Star Health",
+      "salary": "",
+      "policyMaxAmount": 1000000,
+      "claimedAmount": 50000,
+      "balance": 950000,
+      "numberOfDependents": 2,
+      "id": "_HQOmk2"
     }
   ],
   "professions": [

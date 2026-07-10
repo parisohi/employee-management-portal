@@ -1,10 +1,11 @@
 .employee-container {
     width: 500px;
-    margin: 40px auto;
-    padding: 30px;
+    margin: 0;
+    padding: 20px;
     background: #fff;
     box-shadow: 0 5px 15px rgba(0, 0, 0, .15);
     border-radius: 10px;
+    overflow-y: auto;
 }
 
 h2 {
