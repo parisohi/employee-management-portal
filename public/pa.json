@@ -57,7 +57,9 @@
         "PROFESSION_REQUIRED": "ਪੇਸ਼ਾ ਲਾਜ਼ਮੀ ਹੈ।",
         "SALARY_REQUIRED": "ਤਨਖਾਹ ਲਾਜ਼ਮੀ ਹੈ।",
         "SAVE": "ਕਰਮਚਾਰੀ ਸੇਵ ਕਰੋ",
-        "UPDATE": "ਕਰਮਚਾਰੀ ਅੱਪਡੇਟ ਕਰੋ"
+        "UPDATE": "ਕਰਮਚਾਰੀ ਅੱਪਡੇਟ ਕਰੋ",
+        "SHOW_HOBBIES": "ਸ਼ੌਕ ਦਿਖਾਓ",
+        "HOBBIES": "ਸ਼ੌਕ"
     },
     "MEDICAL": {
         "TITLE": "ਮੈਡੀਕਲ ਵੇਰਵੇ",

@@ -57,7 +57,9 @@
         "PROFESSION_REQUIRED": "पेशा आवश्यक है।",
         "SALARY_REQUIRED": "वेतन आवश्यक है।",
         "SAVE": "कर्मचारी सेव करें",
-        "UPDATE": "कर्मचारी अपडेट करें"
+        "UPDATE": "कर्मचारी अपडेट करें",
+        "SHOW_HOBBIES": "शौक दिखाएँ",
+        "HOBBIES": "शौक"
     },
     "MEDICAL": {
         "TITLE": "मेडिकल विवरण",
