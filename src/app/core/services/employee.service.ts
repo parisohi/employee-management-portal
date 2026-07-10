@@ -9,8 +9,10 @@ export class EmployeeService {
 
     private http = inject(HttpClient);
 
-    private apiURL = 'http://localhost:3000/employees';
-    private professionApiURL = 'http://localhost:3000/professions';
+    private apiURL = 'https://employee-management-portal-myas.onrender.com/employees';
+
+
+    private professionApiURL = 'https://employee-management-portal-myas.onrender.com/professions';
     private dummyApiURL = 'https://hub.dummyapis.com/employee?noofRecords=50&idStarts=1001';
 
     private employeeSubject = new BehaviorSubject<any[]>([]);
